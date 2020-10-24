@@ -1,4 +1,5 @@
 const app = () => {
+
     const song = document.querySelector(".song");
     const play = document.querySelector(".play");
     const replay = document.querySelector(".replay");
@@ -7,12 +8,15 @@ const app = () => {
 
     //Sounds
     const sounds = document.querySelectorAll('.sound-picker button');
+
     //time Display
     const timeDisplay = document.querySelector('.time-display');
+
     //get the length of the ouline
     const outlineLength = outline.getTotalLength();
 
-const timeSelect = document.querySelectorAll('.time-select button')
+    //time-select button
+    const timeSelect = document.querySelectorAll('.time-select button')
 
     //duration
     let fakeDuration =600;
@@ -23,11 +27,13 @@ const timeSelect = document.querySelectorAll('.time-select button')
     //pick different sounds
 
     sounds.forEach(sound => {
+
         sound.addEventListener('click',function() {
             song.src = this.getAttribute('data-sound');
             video.src = this.getAttribute('data-video');
             checkPlaying(song);
         });
+
     });
 
 
@@ -39,10 +45,12 @@ const timeSelect = document.querySelectorAll('.time-select button')
 
     //select sound 
     timeSelect.forEach(option => {
+
         option.addEventListener('click',function(){
             fakeDuration = this.getAttribute('data-time')
             timeDisplay.textContent = `${Math.floor(fakeDuration/60)}: ${Math.floor(fakeDuration % 60)}`
         })
+
     })
 
 
@@ -59,8 +67,10 @@ const timeSelect = document.querySelectorAll('.time-select button')
         }
     }
 
+
     //animate the circle
     song.ontimeupdate = () => {
+
         let currentTime = song.currentTime;
         let elapsed = fakeDuration - currentTime;
         let seconds = Math.floor(elapsed % 60) ;
